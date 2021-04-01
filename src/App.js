@@ -1,7 +1,35 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import axios from "axios";
-import Carousel from "./components/Carousel.js";
+import Carousel from "./components/Carousel";
+import styled from 'styled-components';
+
+const Container = styled.div`
+text-align: center;
+background-color: grey;
+`
+
+const Title = styled.div`
+text-align: center;
+padding: 10px;
+font-weight: 800;
+color: transparent;
+font-size: 90px;
+background: url("https://s3.amazonaws.com/psiu/wallpapers/heic0604a/heic0604a_tablet.jpg");
+background-position: 40% 50%;
+-webkit-background-clip: text;
+position: relative;
+text-align: center;
+line-height: 90px;
+letter-spacing: 5px;
+-webkit-text-stroke-width: 2px;
+-webkit-text-stroke-color: black;
+`
+
+const Copyright = styled.div`
+margin-top: 5%;
+font-size: 28px;
+`
 
 function App() {
 
@@ -44,11 +72,11 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <h1>NASA Photo Of The Day</h1>
+    <Container>
+      <Title>NASA Photo Of The Day</Title>
       <Carousel image={image} date={date.toJSON().slice(0,10)} func={dateHandler}/>
-      <span>Image Copyright: {image.copyright ? image.copyright : "Public Domain"} </span>
-    </div>
+      <Copyright>Image Copyright: {image.copyright ? image.copyright : "Public Domain"}</Copyright>
+    </Container>
   );
 }
 
